@@ -721,28 +721,10 @@ SOFTWARE.
 
 ---
 
-## 🌟 Star History
-
-If you find this project useful, please consider giving it a ⭐️!
-
-[![Star History Chart](https://api.star-history.com/svg?repos=krishnasinghprojects/codm-stats-analyzer&type=Date)](https://star-history.com/#krishnasinghprojects/codm-stats-analyzer&Date)
-
----
-
-## 📊 Project Stats
-
-![GitHub stars](https://img.shields.io/github/stars/krishnasinghprojects/codm-stats-analyzer?style=social)
-![GitHub forks](https://img.shields.io/github/forks/krishnasinghprojects/codm-stats-analyzer?style=social)
-![GitHub watchers](https://img.shields.io/github/watchers/krishnasinghprojects/codm-stats-analyzer?style=social)
-
----
-
 <div align="center">
 
-**Made with ❤️ by [Krishna Singh](https://github.com/krishnasinghprojects)**
+**Made by [Krishna Singh](https://github.com/krishnasinghprojects)**
 
-If you found this project helpful, please give it a ⭐️!
-
-[⬆ Back to Top](#-codm-stats-analyzer)
+If you found this project helpful, please give it a Star !
 
 </div>
