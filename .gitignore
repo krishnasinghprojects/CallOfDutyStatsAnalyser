@@ -37,3 +37,4 @@ lib/*firebase-adminsdk*.json
 next-env.d.ts
 
 DEPLOYMENT_GUIDE.md
+DEPLOYMENT_NOW.md
