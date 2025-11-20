@@ -201,7 +201,7 @@
         }
     </style>
 </head>
-<body class="p-4 md:p-8 min-h-screen flex items-center justify-center">
+<body class="p-4 md:p-8 min-h-screen flex flex-col items-center justify-center">
 
     <div class="max-w-4xl w-full">
         <!-- Header -->
@@ -709,5 +709,65 @@ RETURN: Valid JSON with exact same structure as example above. Username must be 
             }
         });
     </script>
+
+    <!-- Footer -->
+    <footer class="mt-16 mb-8">
+        <div class="max-w-4xl mx-auto">
+            <div class="glass-panel rounded-xl p-8 border-t-2 border-t-cod-gold/30">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- About Section -->
+                    <div>
+                        <h3 class="text-cod-gold text-sm font-heading mb-4 tracking-widest uppercase flex items-center gap-2">
+                            <i class="fa-solid fa-info-circle"></i>
+                            <span>About CODM Analyzer</span>
+                        </h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            CODM Stats Analyzer is an AI-powered platform designed to provide detailed analysis of your Call of Duty Mobile gameplay. Upload your screenshots and get instant insights, performance ratings, and tactical recommendations.
+                        </p>
+                    </div>
+
+                    <!-- Contact & Connect Section -->
+                    <div>
+                        <h3 class="text-cod-gold text-sm font-heading mb-4 tracking-widest uppercase flex items-center gap-2">
+                            <i class="fa-solid fa-user-circle"></i>
+                            <span>Developer</span>
+                        </h3>
+                        <div class="space-y-2 text-sm">
+                            <p class="text-gray-300">
+                                <span class="text-gray-500">Created by:</span> 
+                                <span class="text-white font-semibold">Krishna Singh</span>
+                            </p>
+                            <p class="text-gray-400">
+                                <i class="fa-solid fa-envelope mr-2 text-cyan-400"></i>
+                                <a href="mailto:krishnasinghprojects@gmail.com" class="hover:text-cod-gold transition">krishnasinghprojects@gmail.com</a>
+                            </p>
+                            <p class="text-gray-400">
+                                <i class="fa-brands fa-github mr-2 text-cyan-400"></i>
+                                <a href="https://github.com/krishnasinghprojects" target="_blank" class="hover:text-cod-gold transition">GitHub.com/krishnasinghprojects</a>
+                            </p>
+                            <div class="flex gap-3 mt-4">
+                                <a href="https://www.linkedin.com/in/krishnasinghprojects" target="_blank" class="text-gray-400 hover:text-cod-gold transition text-lg">
+                                    <i class="fa-brands fa-linkedin"></i>
+                                </a>
+                                <a href="https://www.instagram.com/krishnasinghprojects" target="_blank" class="text-gray-400 hover:text-cod-gold transition text-lg">
+                                    <i class="fa-brands fa-instagram"></i>
+                                </a>
+                                <a href="https://github.com/krishnasinghprojects" target="_blank" class="text-gray-400 hover:text-cod-gold transition text-lg">
+                                    <i class="fa-brands fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Copyright -->
+                <div class="mt-8 pt-6 border-t border-gray-800 text-center">
+                    <p class="text-gray-500 text-xs font-mono">
+                        © 2025 CODM Stats Analyzer. All rights reserved. | Made by Krishna Singh
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
