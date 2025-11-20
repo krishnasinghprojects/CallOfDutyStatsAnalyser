@@ -1,37 +1,23 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { initializeApp, getApps, cert } from 'firebase-admin/app'
-import { getFirestore } from 'firebase-admin/firestore'
-
-// Initialize Firebase Admin with environment variables
-if (!getApps().length) {
-  try {
-    const privateKey = process.env.FIREBASE_PRIVATE_KEY
-    const clientEmail = process.env.FIREBASE_CLIENT_EMAIL
-    const projectId = process.env.FIREBASE_PROJECT_ID
-
-    if (privateKey && clientEmail && projectId) {
-      initializeApp({
-        credential: cert({
-          projectId,
-          clientEmail,
-          privateKey: privateKey.replace(/\\n/g, '\n'),
-        }),
-      })
-    } else {
-      console.error('Missing Firebase Admin credentials in environment variables')
-    }
-  } catch (error) {
-    console.log('Firebase admin initialization error', error)
-  }
-}
-
-const db = getFirestore()
+import { getAdminDb } from '@/lib/firebase-admin'
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  // Add CORS headers
+  res.setHeader('Access-Control-Allow-Credentials', 'true')
+  res.setHeader('Access-Control-Allow-Origin', '*')
+  res.setHeader('Access-Control-Allow-Methods', 'GET,DELETE,OPTIONS')
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type')
+
+  // Handle OPTIONS request
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end()
+  }
+
   if (req.method === 'GET') {
+    const db = getAdminDb()
     // Get all dashboards for a user
     const { userId } = req.query
 
@@ -77,6 +63,8 @@ export default async function handler(
     }
 
     try {
+      const db = getAdminDb()
+      
       // Try userAnalyses first
       let doc = await db.collection('userAnalyses').doc(id).get()
       let collection = 'userAnalyses'

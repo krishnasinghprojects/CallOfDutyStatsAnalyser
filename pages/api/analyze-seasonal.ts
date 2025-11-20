@@ -173,7 +173,7 @@ RETURN FORMAT - EXACT JSON STRUCTURE:
       },
       {
         "title": "Performance Goals",
-        "icon": "fa-target",
+        "icon": "fa-bullseye",
         "color": "green",
         "points": [
           "Target 55%+ win rate for consistent rank gains",

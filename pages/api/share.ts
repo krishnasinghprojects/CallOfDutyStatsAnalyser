@@ -1,40 +1,37 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { randomBytes } from 'crypto'
-import { initializeApp, getApps, cert } from 'firebase-admin/app'
-import { getFirestore, FieldValue } from 'firebase-admin/firestore'
-
-// Initialize Firebase Admin with environment variables
-if (!getApps().length) {
-  try {
-    const privateKey = process.env.FIREBASE_PRIVATE_KEY
-    const clientEmail = process.env.FIREBASE_CLIENT_EMAIL
-    const projectId = process.env.FIREBASE_PROJECT_ID
-
-    if (privateKey && clientEmail && projectId) {
-      initializeApp({
-        credential: cert({
-          projectId,
-          clientEmail,
-          privateKey: privateKey.replace(/\\n/g, '\n'),
-        }),
-      })
-    } else {
-      console.error('Missing Firebase Admin credentials in environment variables')
-    }
-  } catch (error) {
-    console.log('Firebase admin initialization error', error)
-  }
-}
-
-const db = getFirestore()
+import { getAdminDb } from '@/lib/firebase-admin'
+import { FieldValue } from 'firebase-admin/firestore'
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  // Add CORS headers
+  res.setHeader('Access-Control-Allow-Credentials', 'true')
+  res.setHeader('Access-Control-Allow-Origin', '*')
+  res.setHeader('Access-Control-Allow-Methods', 'GET,POST,OPTIONS')
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type')
+
+  // Handle OPTIONS request
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end()
+  }
+
   if (req.method === 'POST') {
     // Save dashboard data and return shareable ID
     try {
+      let db
+      try {
+        db = getAdminDb()
+      } catch (initError: any) {
+        console.error('Firebase initialization failed:', initError)
+        return res.status(500).json({ 
+          error: 'Database initialization failed',
+          details: initError.message 
+        })
+      }
+
       const { dashboardData, userId } = req.body
 
       if (!dashboardData) {
@@ -77,6 +74,8 @@ export default async function handler(
     }
 
     try {
+      const db = getAdminDb()
+      
       // Try sharedDashboards first
       let doc = await db.collection('sharedDashboards').doc(id).get()
       
