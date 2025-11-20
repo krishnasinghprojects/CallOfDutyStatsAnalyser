@@ -2,6 +2,37 @@
 
 A beautiful, AI-powered Call of Duty Mobile statistics analyzer that uses Google's Gemini AI to extract and analyze player stats from screenshots.
 
+## 🎉 NEW: Next.js Version Available!
+
+This project has been converted to **Next.js with TypeScript** for better security and performance!
+
+### Key Improvements:
+- ✅ **Secure API Calls**: API key stored in backend environment variables (never exposed to frontend)
+- ✅ **TypeScript**: Full type safety throughout the application
+- ✅ **Better Performance**: Optimized builds and automatic code splitting
+- ✅ **Easy Deployment**: One-click deploy to Vercel, Netlify, etc.
+- ✅ **Production Ready**: Built-in optimization and best practices
+
+### Quick Start (Next.js Version):
+```bash
+npm install
+cp .env.example .env
+# Add your GEMINI_API_KEY to .env
+npm run dev
+```
+
+📖 **See [QUICK_START_FIREBASE.md](QUICK_START_FIREBASE.md) for Firebase setup (5 minutes)**
+📖 **See [README_NEXTJS.md](README_NEXTJS.md) for complete Next.js documentation**
+📖 **See [SETUP.md](SETUP.md) for step-by-step setup guide**
+
+---
+
+## Original HTML Version
+
+The original HTML version is still available in the repository (index.html, form.html, dashboard.html).
+
+A beautiful, AI-powered Call of Duty Mobile statistics analyzer that uses Google's Gemini AI to extract and analyze player stats from screenshots.
+
 ## 🎮 Features
 
 - **AI-Powered Analysis**: Upload screenshots and let Gemini AI extract all stats automatically
@@ -80,7 +111,7 @@ The JSON structure includes:
 
 ### Technologies Used
 - **Frontend**: HTML, CSS (Tailwind), JavaScript
-- **AI**: Google Gemini 2.0 Flash
+- **AI**: Google Gemini 2.5 Flash
 - **Charts**: Chart.js
 - **Export**: html2canvas
 - **Icons**: Font Awesome
