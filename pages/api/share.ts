@@ -21,18 +21,23 @@ export default async function handler(
   if (req.method === 'POST') {
     // Save dashboard data and return shareable ID
     try {
+      console.log('📝 Share API - POST request received')
+      
       let db
       try {
         db = getAdminDb()
+        console.log('✅ Database connection established')
       } catch (initError: any) {
-        console.error('Firebase initialization failed:', initError)
+        console.error('❌ Firebase initialization failed:', initError)
         return res.status(500).json({ 
-          error: 'Database initialization failed',
+          error: 'Database not configured',
+          message: 'Firebase Admin credentials are missing. Please configure FIREBASE_PRIVATE_KEY, FIREBASE_CLIENT_EMAIL, and FIREBASE_PROJECT_ID in Vercel environment variables.',
           details: initError.message 
         })
       }
 
       const { dashboardData, userId } = req.body
+      console.log('📊 Request data:', { hasData: !!dashboardData, userId: userId || 'anonymous' })
 
       if (!dashboardData) {
         return res.status(400).json({ error: 'Invalid dashboard data' })
@@ -53,6 +58,7 @@ export default async function handler(
       const analysisType = dashboardData.type || (isSeasonal ? 'seasonal' : 'overall')
 
       // Store in Firestore
+      console.log('💾 Saving to Firestore...')
       await db.collection('sharedDashboards').doc(shareId).set({
         data: dashboardData,
         userId: userId || null,
@@ -60,10 +66,15 @@ export default async function handler(
         createdAt: FieldValue.serverTimestamp(),
       })
 
+      console.log('✅ Share created successfully:', shareId)
       return res.status(200).json({ shareId })
     } catch (error: any) {
-      console.error('Share error:', error)
-      return res.status(500).json({ error: 'Failed to create shareable link' })
+      console.error('❌ Share error:', error)
+      return res.status(500).json({ 
+        error: 'Failed to create shareable link',
+        message: error.message,
+        details: error.stack 
+      })
     }
   } else if (req.method === 'GET') {
     // Retrieve dashboard data by ID

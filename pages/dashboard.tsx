@@ -213,16 +213,6 @@ export default function DashboardPage() {
                   <i className="fa-solid fa-arrow-left"></i> Back
                 </span>
               </button>
-              {auth.currentUser && (
-                <button
-                  onClick={() => router.push('/my-dashboards')}
-                  className="group relative px-6 py-3 bg-black/60 border border-gray-600 hover:border-purple-500 transition-all rounded-lg overflow-hidden shadow-lg"
-                >
-                  <span className="relative font-heading text-sm text-gray-300 group-hover:text-purple-400 tracking-widest uppercase flex items-center justify-center gap-2">
-                    <i className="fa-solid fa-list"></i> My Dashboards
-                  </span>
-                </button>
-              )}
               <button
                 onClick={copyShareLink}
                 disabled={!shareUrl}
@@ -235,7 +225,7 @@ export default function DashboardPage() {
                 <div className={`absolute inset-0 transition-transform duration-300 ${
                   showCopied 
                     ? 'bg-gradient-to-r from-green-500/30 to-emerald-500/30' 
-                    : 'bg-gradient-to-r from-cod-gold/20 to-orange-500/20 translate-y-full group-hover:translate-y-0'
+                    : 'bg-gradient-to-r translate-y-full '
                 }`}></div>
                 <span className={`relative font-heading text-sm tracking-widest uppercase flex items-center justify-center gap-2 transition-colors duration-300 ${
                   showCopied 
@@ -297,6 +287,67 @@ export default function DashboardPage() {
               <TacticalBriefing briefing={data.tacticalBriefing} />
             </div>
           )}
+
+          {/* Footer */}
+          <footer className="mt-16 mb-8">
+            <div className="glass-panel rounded-xl p-8 border-t-2 border-t-cod-gold/30">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {/* About Section */}
+                <div>
+                  <h3 className="text-cod-gold text-sm font-heading mb-4 tracking-widest uppercase flex items-center gap-2">
+                    <i className="fa-solid fa-info-circle"></i>
+                    <span>About CODM Analyzer</span>
+                  </h3>
+                  <p className="text-gray-400 text-sm leading-relaxed">
+                    CODM Stats Analyzer is an AI-powered platform designed to provide detailed analysis of your Call of Duty Mobile gameplay. Upload your screenshots and get instant insights, performance ratings, and tactical recommendations.
+                  </p>
+                </div>
+
+                {/* Contact & Connect Section */}
+                <div>
+                  <h3 className="text-cod-gold text-sm font-heading mb-4 tracking-widest uppercase flex items-center gap-2">
+                    <i className="fa-solid fa-user-circle"></i>
+                    <span>Developer</span>
+                  </h3>
+                  <div className="space-y-2 text-sm">
+                    <p className="text-gray-300">
+                      <span className="text-gray-500">Created by:</span> <span className="text-white font-semibold">Krishna Singh</span>
+                    </p>
+                    <p className="text-gray-400">
+                      <i className="fa-solid fa-envelope mr-2"></i>
+                      <a href="mailto:krishnasinghprojects@gmail.com" className="text-gray-400 hover:text-cod-gold transition no-underline">
+                        krishnasinghprojects@gmail.com
+                      </a>
+                    </p>
+                    <p className="text-gray-400">
+                      <i className="fa-brands fa-github mr-2"></i>
+                      <a href="https://github.com/krishnasinghprojects" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-cod-gold transition no-underline">
+                        GitHub.com/krishnasinghprojects
+                      </a>
+                    </p>
+                    <div className="flex gap-3 mt-4">
+                      <a href="https://www.linkedin.com/in/krishnasinghprojects" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-cod-gold transition text-lg">
+                        <i className="fa-brands fa-linkedin"></i>
+                      </a>
+                      <a href="https://www.instagram.com/krishnasinghprojects" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-cod-gold transition text-lg">
+                        <i className="fa-brands fa-instagram"></i>
+                      </a>
+                      <a href="https://github.com/krishnasinghprojects" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-cod-gold transition text-lg">
+                        <i className="fa-brands fa-github"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Copyright */}
+              <div className="mt-8 pt-6 border-t border-gray-800 text-center">
+                <p className="text-gray-500 text-xs font-mono">
+                  © 2025 CODM Stats Analyzer. All rights reserved. | Made by Krishna Singh
+                </p>
+              </div>
+            </div>
+          </footer>
         </div>
       </div>
     </>
@@ -615,10 +666,10 @@ function Objectives({ objectives }: { objectives: any }) {
               </div>
               <div className="w-full bg-black/40 rounded-full h-3 mb-2 border border-gray-700/50 overflow-hidden">
                 <div
-                  className="h-full rounded-full relative transition-all duration-500"
+                  className="h-full rounded-full relative transition-all duration-500 bg-white"
                   style={{ 
                       width: `${percentage}%`,
-                      background: goal.gradient || 'linear-gradient(to right, #713f12, var(--cod-gold))'
+                      background: 'linear-gradient(to right, #713f12, var(--cod-gold))'
                    }}
                 >
                   <div className="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 bg-white rounded-full shadow-lg animate-pulse"></div>
@@ -753,10 +804,10 @@ function SeasonalDashboard({ data }: { data: DashboardData }) {
     overallScore,
     tier: getTier(overallScore),
     categories: [
-      { label: 'Combat', score: Math.round(kdScore), icon: 'fa-crosshairs' },
-      { label: 'Victory', score: Math.round(winRateScore), icon: 'fa-trophy' },
-      { label: 'MVP Rate', score: Math.round(mvpScore), icon: 'fa-star' },
-      { label: 'Consistency', score: Math.min(100, (seasonal_data?.consecutive_wins || 0) * 10), icon: 'fa-chart-line' }
+      { label: 'Combat', score: Math.round(kdScore), icon: 'fa-crosshairs', color: 'green' },
+      { label: 'Victory', score: Math.round(winRateScore), icon: 'fa-trophy', color: 'yellow' },
+      { label: 'MVP Rate', score: Math.round(mvpScore), icon: 'fa-star', color: 'yellow' },
+      { label: 'Consistency', score: Math.min(100, (seasonal_data?.consecutive_wins || 0) * 10), icon: 'fa-chart-line', color: 'blue' }
     ]
   }
 
@@ -770,8 +821,9 @@ function SeasonalDashboard({ data }: { data: DashboardData }) {
         username={player_info?.username}
         season={seasonal_data?.season}
         rank={seasonal_data?.rank}
-        rankPoints={seasonal_data?.rank_points}
+        kd={seasonal_data?.kd_ratio}
         consecutiveWins={seasonal_data?.consecutive_wins}
+        favoriteWeapon={weapon_usage_stats?.[0]?.weapon_name}
       />
 
       {/* 3. AI Rating */}
@@ -801,7 +853,7 @@ function SeasonalDashboard({ data }: { data: DashboardData }) {
 // Seasonal-Specific Components
 
 // Component: Seasonal Rank Card
-function SeasonalRankCard({ username, season, rank, rankPoints, consecutiveWins }: any) {
+function SeasonalRankCard({ username, season, rank, kd, consecutiveWins, favoriteWeapon }: any) {
   if (!season) return null
   
   return (
@@ -814,23 +866,53 @@ function SeasonalRankCard({ username, season, rank, rankPoints, consecutiveWins 
           <h3 className="text-gray-400 text-[10px] font-bold uppercase tracking-widest group-hover:text-purple-400 transition">Seasonal Rank</h3>
         </div>
         
-        <div className="text-center mb-4">
-          <h2 className="text-4xl font-heading text-white mb-2 group-hover:text-purple-300 transition drop-shadow-lg">{username || 'Player'}</h2>
-          <p className="text-purple-400 text-sm font-mono group-hover:text-purple-300 transition">{season}</p>
+        {/* Player Name and Season */}
+        <div className="text-center mb-4 pb-4 border-b border-purple-500/20">
+          <h2 className="text-3xl font-heading text-white mb-2 group-hover:text-purple-300 transition drop-shadow-lg">{username || 'Player'}</h2>
+          <p className="text-purple-400 text-xs font-mono group-hover:text-purple-300 transition">{season}</p>
         </div>
-        
-        <div className="grid grid-cols-2 gap-4">
-          <div className="bg-black/30 rounded-lg p-4 border border-purple-500/30 hover:border-purple-500 hover:bg-purple-500/10 transition-all duration-300 hover:shadow-[0_0_20px_rgba(168,85,247,0.3)] group/item">
-            <div className="text-purple-400 text-xs mb-1 uppercase tracking-wider group-hover/item:text-purple-300 transition">Rank</div>
-            <div className="text-white font-heading text-2xl group-hover/item:text-purple-200 transition">{rank}</div>
+
+        {/* Rank */}
+        <div className="bg-black/30 rounded-lg p-10 mb-3 border border-purple-500/30 hover:border-purple-500 hover:bg-purple-500/10 transition-all duration-300 hover:shadow-[0_0_20px_rgba(168,85,247,0.3)] group/rank">
+          <div className="flex items-center justify-between">
+            <div>
+              <div className="text-purple-400 text-xs mb-1 uppercase tracking-wider group-hover/rank:text-purple-300 transition">Current Rank</div>
+              <div className="text-white font-heading text-2xl group-hover/rank:text-purple-200 transition">{rank}</div>
+            </div>
+            <i className="fa-solid fa-crown text-cod-gold text-3xl group-hover/rank:animate-pulse"></i>
           </div>
-          <div className="bg-black/30 rounded-lg p-4 border border-purple-500/30 hover:border-purple-500 hover:bg-purple-500/10 transition-all duration-300 hover:shadow-[0_0_20px_rgba(168,85,247,0.3)] group/item">
-            <div className="text-purple-400 text-xs mb-1 uppercase tracking-wider group-hover/item:text-purple-300 transition">Win Streak</div>
-            <div className="text-white font-heading text-2xl flex items-center gap-1 group-hover/item:text-purple-200 transition">
-              {consecutiveWins} <i className="fa-solid fa-fire text-orange-500 text-lg group-hover/item:animate-pulse"></i>
+        </div>
+
+        <div className="grid grid-cols-2 gap-3">
+          {/* K/D Ratio */}
+          <div className="bg-black/30 rounded-lg p-8 border border-green-500/30 hover:border-green-500 hover:bg-green-500/10 transition-all duration-300 hover:shadow-[0_0_20px_rgba(34,197,94,0.3)] group/kd">
+            <div className="text-green-400 text-[10px] mb-1 uppercase tracking-wider group-hover/kd:text-green-300 transition">K/D Ratio</div>
+            <div className="text-white font-heading text-xl group-hover/kd:text-green-200 transition flex items-center gap-1">
+              {kd || '0.00'} <i className="fa-solid fa-crosshairs text-green-500 text-sm"></i>
+            </div>
+          </div>
+
+          {/* Win Streak */}
+          <div className="bg-black/30 rounded-lg p-8 border border-orange-500/30 hover:border-orange-500 hover:bg-orange-500/10 transition-all duration-300 hover:shadow-[0_0_20px_rgba(249,115,22,0.3)] group/streak">
+            <div className="text-orange-400 text-[10px] mb-1 uppercase tracking-wider group-hover/streak:text-orange-300 transition">Win Streak</div>
+            <div className="text-white font-heading text-xl flex items-center gap-1 group-hover/streak:text-orange-200 transition">
+              {consecutiveWins} <i className="fa-solid fa-fire text-orange-500 text-sm group-hover/streak:animate-pulse"></i>
             </div>
           </div>
         </div>
+
+        {/* Favorite Weapon */}
+        {favoriteWeapon && (
+          <div className="bg-black/30 rounded-lg p-10 mt-3 border border-blue-500/30 hover:border-blue-500 hover:bg-blue-500/10 transition-all duration-300 hover:shadow-[0_0_20px_rgba(59,130,246,0.3)] group/weapon">
+            <div className="flex items-center justify-between">
+              <div>
+                <div className="text-blue-400 text-[10px] mb-1 uppercase tracking-wider group-hover/weapon:text-blue-300 transition">Favorite Weapon</div>
+                <div className="text-white font-heading text-lg group-hover/weapon:text-blue-200 transition">{favoriteWeapon}</div>
+              </div>
+              <i className="fa-solid fa-gun text-blue-400/50 text-2xl group-hover/weapon:text-blue-400 transition"></i>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   )
@@ -841,7 +923,7 @@ function WeaponAnalysisCard({ weaponAnalysis }: any) {
   if (!weaponAnalysis) return null
   
   return (
-    <div className="glass-panel rounded-xl p-6 col-span-1 md:col-span-2 animate-entry delay-200 border-t-2 border-t-purple-500/50 group">
+    <div className="glass-panel rounded-xl p-6 col-span-1 md:col-span-1 animate-entry delay-200 border-t-2 border-t-purple-500/50 group">
       <div className="flex items-center gap-2 mb-4">
         <div className="w-1.5 h-1.5 bg-purple-500 rounded-full animate-pulse"></div>
         <h3 className="text-gray-400 text-[10px] font-bold uppercase tracking-widest group-hover:text-purple-400 transition">{weaponAnalysis.title}</h3>

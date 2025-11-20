@@ -77,12 +77,12 @@ export default function MyDashboards() {
         <title>My Dashboards | CODM Stats Analyzer</title>
       </Head>
 
-      <div className="p-4 md:p-8 min-h-screen">
+      <div className="p-4 md:p-8 min-h-screen hidden">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
             <div>
-              <div className="text-[10px] font-mono text-cyan-400 tracking-[0.3em] uppercase mb-1 text-glow-cyan">
+              <div className="text-[10px] font-mono tracking-[0.3em] uppercase mb-1 text-glow-cyan">
                 Your Saved Analyses
               </div>
               <h1 className="text-3xl md:text-5xl font-heading text-white uppercase tracking-wider drop-shadow-lg">

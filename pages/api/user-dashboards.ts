@@ -17,7 +17,6 @@ export default async function handler(
   }
 
   if (req.method === 'GET') {
-    const db = getAdminDb()
     // Get all dashboards for a user
     const { userId } = req.query
 
@@ -25,7 +24,21 @@ export default async function handler(
       return res.status(400).json({ error: 'Invalid user ID' })
     }
 
+    console.log('📋 Fetching dashboards for user:', userId)
+
     try {
+      let db
+      try {
+        db = getAdminDb()
+        console.log('✅ Database connection established')
+      } catch (initError: any) {
+        console.error('❌ Firebase initialization failed:', initError)
+        return res.status(500).json({ 
+          error: 'Database not configured',
+          message: 'Firebase Admin credentials are missing. Please configure environment variables in Vercel.',
+          details: initError.message 
+        })
+      }
       // Try userAnalyses collection first (new structure)
       let snapshot = await db
         .collection('userAnalyses')
@@ -49,10 +62,14 @@ export default async function handler(
         ...doc.data(),
       }))
 
+      console.log(`✅ Found ${dashboards.length} dashboards`)
       return res.status(200).json({ dashboards })
-    } catch (error) {
-      console.error('Fetch error:', error)
-      return res.status(500).json({ error: 'Failed to fetch dashboards' })
+    } catch (error: any) {
+      console.error('❌ Fetch error:', error)
+      return res.status(500).json({ 
+        error: 'Failed to fetch dashboards',
+        message: error.message 
+      })
     }
   } else if (req.method === 'DELETE') {
     // Delete a dashboard

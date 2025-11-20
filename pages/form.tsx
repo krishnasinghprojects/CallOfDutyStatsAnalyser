@@ -385,7 +385,7 @@ export default function FormPage() {
         <div className="max-w-4xl w-full">
           {/* Header */}
           <div className="text-center mb-8">
-            <div className="text-[10px] font-mono text-cyan-400 tracking-[0.3em] uppercase mb-2 text-glow-cyan">
+            <div className="text-[10px] font-mono tracking-[0.3em] uppercase mb-2 text-glow-cyan">
               AI-Powered Stats Analysis
             </div>
             <h1 className="text-4xl md:text-6xl font-heading text-white uppercase tracking-wider drop-shadow-lg mb-2">
@@ -616,7 +616,7 @@ export default function FormPage() {
                           onClick={() => !seasonalPreviews[1] && seasonalFileInputs.current[1]?.click()}
                         >
                           {!seasonalPreviews[1] ? (
-                            <div className="upload-content p-12 text-center cursor-pointer">
+                            <div className="upload-content flex flex-col p-12 text-center cursor-pointer">
                               <i className="fa-solid fa-cloud-arrow-up text-3xl text-purple-400 mb-2"></i>
                               <p className="text-gray-300 text-sm font-semibold">Weapon #1</p>
                               <input
@@ -728,13 +728,6 @@ export default function FormPage() {
                         </div>
                       </div>
                     </div>
-
-                    <div className="bg-purple-500/10 border border-purple-500/30 rounded-lg p-4 mb-6">
-                      <p className="text-purple-300 text-sm">
-                        <i className="fa-solid fa-info-circle mr-2"></i>
-                        <strong>Note:</strong> Seasonal analysis requires 4 screenshots - your seasonal rank stats and your top 3 most used weapons.
-                      </p>
-                    </div>
                   </>
                 )}
 
@@ -743,7 +736,7 @@ export default function FormPage() {
                   type="submit"
                   className="group relative w-full bg-gradient-to-r from-cod-gold/20 to-orange-500/20 border-2 border-cod-gold hover:border-orange-500 text-cod-gold hover:text-white font-heading text-xl py-5 rounded-lg transition-all duration-300 uppercase tracking-widest overflow-hidden hover:shadow-[0_0_30px_rgba(255,215,0,0.4)] animate-pulse-glow"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-r from-cod-gold/30 to-orange-500/30 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+
                   <span className="relative flex items-center justify-center gap-3">
                     <i className="fa-solid fa-brain text-2xl group-hover:animate-pulse"></i>
                     <span>Analyze with AI</span>
@@ -765,7 +758,6 @@ export default function FormPage() {
                         onClick={() => viewDashboard(latestOverallId)}
                         className="group relative px-6 py-4 bg-gradient-to-r from-cod-gold/10 to-orange-500/10 border-2 border-cod-gold/50 text-cod-gold rounded-lg hover:border-cod-gold transition-all duration-300 font-heading uppercase tracking-wider text-sm hover:shadow-[0_0_20px_rgba(255,215,0,0.4)] overflow-hidden"
                       >
-                        <div className="absolute inset-0 bg-gradient-to-r from-cod-gold/20 to-orange-500/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
                         <span className="relative flex items-center justify-center gap-2">
                           <i className="fa-solid fa-chart-line"></i>
                           View Overall Dashboard
@@ -857,6 +849,67 @@ export default function FormPage() {
               </div>
             </div>
           )}
+
+          {/* Footer */}
+          <footer className="mt-16 mb-8">
+            <div className="glass-panel rounded-xl p-8 border-t-2 border-t-cod-gold/30">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {/* About Section */}
+                <div>
+                  <h3 className="text-cod-gold text-sm font-heading mb-4 tracking-widest uppercase flex items-center gap-2">
+                    <i className="fa-solid fa-info-circle"></i>
+                    <span>About CODM Analyzer</span>
+                  </h3>
+                  <p className="text-gray-400 text-sm leading-relaxed">
+                    CODM Stats Analyzer is an AI-powered platform designed to provide detailed analysis of your Call of Duty Mobile gameplay. Upload your screenshots and get instant insights, performance ratings, and tactical recommendations.
+                  </p>
+                </div>
+
+                {/* Contact & Connect Section */}
+                <div>
+                  <h3 className="text-cod-gold text-sm font-heading mb-4 tracking-widest uppercase flex items-center gap-2">
+                    <i className="fa-solid fa-user-circle"></i>
+                    <span>Developer</span>
+                  </h3>
+                  <div className="space-y-2 text-sm">
+                    <p className="text-gray-300">
+                      <span className="text-gray-500">Created by:</span> <span className="text-white font-semibold">Krishna Singh</span>
+                    </p>
+                    <p className="text-gray-400">
+                      <i className="fa-solid fa-envelope mr-2 "></i>
+                      <a href="mailto:krishnasinghprojects@gmail.com" className="text-gray-400 hover:text-cod-gold transition no-underline">
+                        krishnasinghprojects@gmail.com
+                      </a>
+                    </p>
+                    <p className="text-gray-400">
+                      <i className="fa-brands fa-github mr-2"></i>
+                      <a href="https://github.com/krishnasinghprojects" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-cod-gold transition no-underline">
+                        GitHub.com/krishnasinghprojects
+                      </a>
+                    </p>
+                    <div className="flex gap-3 mt-4">
+                      <a href="https://www.linkedin.com/in/krishnasinghprojects" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-cod-gold transition text-lg">
+                        <i className="fa-brands fa-linkedin"></i>
+                      </a>
+                      <a href="https://www.instagram.com/krishnasinghprojects" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-cod-gold transition text-lg">
+                        <i className="fa-brands fa-instagram"></i>
+                      </a>
+                      <a href="https://github.com/krishnasinghprojects" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-cod-gold transition text-lg">
+                        <i className="fa-brands fa-github"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Copyright */}
+              <div className="mt-8 pt-6 border-t border-gray-800 text-center">
+                <p className="text-gray-500 text-xs font-mono">
+                  © 2025 CODM Stats Analyzer. All rights reserved. | Made by Krishna Singh
+                </p>
+              </div>
+            </div>
+          </footer>
         </div>
       </div>
     </>

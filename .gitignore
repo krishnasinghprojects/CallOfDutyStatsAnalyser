@@ -25,6 +25,7 @@ yarn-error.log*
 # local env files
 .env*.local
 .env
+env.json
 
 # Firebase Admin SDK credentials
 lib/*firebase-adminsdk*.json
@@ -35,6 +36,3 @@ lib/*firebase-adminsdk*.json
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-
-DEPLOYMENT_GUIDE.md
-DEPLOYMENT_NOW.md
