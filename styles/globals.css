@@ -50,6 +50,9 @@ body {
   transform: translateY(-2px);
   box-shadow: 0 0 30px rgba(255, 215, 0, 0.2), 0 12px 40px 0 rgba(0, 0, 0, 0.7);
 }
+.glass-panel {
+  overflow: visible !important;
+}
 
 .glass-panel:hover::before {
   opacity: 1;
@@ -170,7 +173,7 @@ body {
 
 .upload-box {
   position: relative;
-  min-height: 200px;
+  min-height: 250px;
 }
 
 .preview-container img {

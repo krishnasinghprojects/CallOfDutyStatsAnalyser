@@ -616,7 +616,7 @@ export default function FormPage() {
                           onClick={() => !seasonalPreviews[1] && seasonalFileInputs.current[1]?.click()}
                         >
                           {!seasonalPreviews[1] ? (
-                            <div className="upload-content flex flex-col p-12 text-center cursor-pointer">
+                            <div className="upload-content flex flex-col mt-10 p-12 text-center cursor-pointer">
                               <i className="fa-solid fa-cloud-arrow-up text-3xl text-purple-400 mb-2"></i>
                               <p className="text-gray-300 text-sm font-semibold">Weapon #1</p>
                               <input
@@ -657,7 +657,7 @@ export default function FormPage() {
                           onClick={() => !seasonalPreviews[2] && seasonalFileInputs.current[2]?.click()}
                         >
                           {!seasonalPreviews[2] ? (
-                            <div className="upload-content p-12 text-center cursor-pointer">
+                            <div className="upload-content mt-10 p-12 text-center cursor-pointer">
                               <i className="fa-solid fa-cloud-arrow-up text-3xl text-purple-400 mb-2"></i>
                               <p className="text-gray-300 text-sm font-semibold">Weapon #2</p>
                               <input
@@ -698,7 +698,7 @@ export default function FormPage() {
                           onClick={() => !seasonalPreviews[3] && seasonalFileInputs.current[3]?.click()}
                         >
                           {!seasonalPreviews[3] ? (
-                            <div className="upload-content p-12 text-center cursor-pointer">
+                            <div className="upload-content mt-10 p-12 text-center cursor-pointer">
                               <i className="fa-solid fa-cloud-arrow-up text-3xl text-purple-400 mb-2"></i>
                               <p className="text-gray-300 text-sm font-semibold">Weapon #3</p>
                               <input
