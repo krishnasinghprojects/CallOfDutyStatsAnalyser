@@ -2,7 +2,6 @@ import { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 import dynamic from 'next/dynamic'
-import html2canvas from 'html2canvas'
 import { auth } from '@/lib/firebase'
 
 // Dynamically import Chart component to avoid SSR issues
